@@ -13,6 +13,7 @@ type WorkExperience = {
   end: string
   link: string
   id: string
+  details?: string
 }
 
 type BlogPost = {
@@ -29,91 +30,70 @@ type SocialLink = {
 
 export const PROJECTS: Project[] = [
   {
-    name: 'Motion Primitives Pro',
+    name: 'Virtual AI Inventory',
     description:
-      'Advanced components and templates to craft beautiful websites.',
-    link: 'https://pro.motion-primitives.com/',
-    video:
-      'https://res.cloudinary.com/read-cv/video/upload/t_v_b/v1/1/profileItems/W2azTw5BVbMXfj7F53G92hMVIn32/newProfileItem/d898be8a-7037-4c71-af0c-8997239b050d.mp4?_a=DATAdtAAZAA0',
+      'Collaborative inventory management platform.',
+    link: 'https://github.com/swapisticated/exp-inventory',
+    video: '/VAI.mp4',
     id: 'project1',
   },
   {
-    name: 'Motion Primitives',
-    description: 'UI kit to make beautiful, animated interfaces.',
-    link: 'https://motion-primitives.com/',
-    video:
-      'https://res.cloudinary.com/read-cv/video/upload/t_v_b/v1/1/profileItems/W2azTw5BVbMXfj7F53G92hMVIn32/XSfIvT7BUWbPRXhrbLed/ee6871c9-8400-49d2-8be9-e32675eabf7e.mp4?_a=DATAdtAAZAA0',
+    name: 'Employee Management System',
+    description:
+      'Role-based HRMS.',
+    link: 'https://github.com/swapisticated/HMS',
+    video: '/HMS.mp4',
     id: 'project2',
   },
+  // {
+  //   name: 'Adaptive Water Management System',
+  //   description:
+  //     'Full-stack IoT system for real-time ESP32 device control and analytics via MQTT. React Native app and Next.js dashboard. Tech: React Native, Next.js, Fastify, Firestore, MQTT.',
+  //   link: '',
+  //   video: '',
+  //   id: 'project3',
+  // },
 ]
 
 export const WORK_EXPERIENCE: WorkExperience[] = [
   {
-    company: 'Reglazed Studio',
-    title: 'CEO',
-    start: '2024',
+    company: 'Skyroot Marktech',
+    title: 'Mobile App Developer Intern',
+    start: 'Mar 2025',
     end: 'Present',
-    link: 'https://ibelick.com',
+    link: 'https://www.skyrootmarktech.com/ ',
     id: 'work1',
+    details: 'Worked on developing a cross-platform mobile app using React Native for inventory tracking. Implemented features for real-time data sync, push notifications, and user authentication.'
   },
   {
-    company: 'Freelance',
-    title: 'Design Engineer',
-    start: '2022',
-    end: '2024',
-    link: 'https://ibelick.com',
+    company: 'Experimind Labs',
+    title: 'Full Stack Developer Intern',
+    start: 'Jun 2024',
+    end: 'Feb 2025',
+    link: '',
     id: 'work2',
-  },
-  {
-    company: 'Freelance',
-    title: 'Front-end Developer',
-    start: '2017',
-    end: 'Present',
-    link: 'https://ibelick.com',
-    id: 'work3',
+    details: 'Built and maintained web applications using Next.js and Node.js. Collaborated with the design team to deliver responsive UI and integrated REST APIs for data management.'
   },
 ]
 
 export const BLOG_POSTS: BlogPost[] = [
   {
-    title: 'Exploring the Intersection of Design, AI, and Design Engineering',
-    description: 'How AI is changing the way we design',
-    link: '/blog/exploring-the-intersection-of-design-ai-and-design-engineering',
-    uid: 'blog-1',
-  },
-  {
-    title: 'Why I left my job to start my own company',
-    description:
-      'A deep dive into my decision to leave my job and start my own company',
-    link: '/blog/exploring-the-intersection-of-design-ai-and-design-engineering',
-    uid: 'blog-2',
-  },
-  {
-    title: 'What I learned from my first year of freelancing',
-    description:
-      'A look back at my first year of freelancing and what I learned',
-    link: '/blog/exploring-the-intersection-of-design-ai-and-design-engineering',
-    uid: 'blog-3',
+    title: 'Secured Homomorphic Encryption and Authentication for Healthcare',
+    description: 'Presented at ICRASET 2024, IEEE Xplore.',
+    link: 'https://ieeexplore.ieee.org/document/10895758',
+    uid: 'pub-1',
   },
 ]
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
     label: 'Github',
-    link: 'https://github.com/ibelick',
-  },
-  {
-    label: 'Twitter',
-    link: 'https://twitter.com/ibelick',
+    link: 'https://github.com/swapisticated',
   },
   {
     label: 'LinkedIn',
-    link: 'https://www.linkedin.com/in/ibelick',
-  },
-  {
-    label: 'Instagram',
-    link: 'https://www.instagram.com/ibelick',
+    link: 'https://www.linkedin.com/in/swapnil-sharma-806',
   },
 ]
 
-export const EMAIL = 'your@email.com'
+export const EMAIL = 'swapnilsharma806@gmail.com'
