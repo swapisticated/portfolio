@@ -94,7 +94,7 @@ Key Highlights
     link: '',
     id: 'work2',
     details: `Built full-stack web and mobile applications using Next.js, Node.js, and React Native, focused on delivering real-time education and control platforms.
-
+    
     Responsibilities
 - Developed scalable web dashboards with Next.js and backend APIs using Node.js.
 - Built cross-platform mobile apps in React Native, integrating REST APIs for dynamic data handling.

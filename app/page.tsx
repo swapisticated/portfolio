@@ -135,7 +135,7 @@ function RenderJobDetails({ details }: { details: string }) {
       // Section headers
       if (/^(Responsibilities|Key Highlights)$/i.test(line.trim())) {
         elements.push(
-          <div key={`h4-${idx}`} className="font-semibold mt-6 mb-2 text-zinc-100">{line.trim()}</div>
+          <div key={`h4-${idx}`} className="font-semibold mt-6 mb-2 text-zinc-800 dark:text-zinc-100">{line.trim()}</div>
         );
       } else if (line.trim() !== '') {
         elements.push(
@@ -214,7 +214,7 @@ export default function Personal() {
 
                     {job.details && (
                       <div
-                      className="mt-4 text-zinc-700 dark:text-zinc-300 text-sm overflow-hidden overflow-y-auto transition-all duration-300 ease-in-out"
+                      className="mt-4 text-zinc-700 dark:text-zinc-300 text-sm  transition-all duration-300 ease-in-out"
                         style={{
                           maxHeight: isExpanded ? "500px" : "0",
                           opacity: isExpanded ? 1 : 0,
@@ -235,7 +235,7 @@ export default function Personal() {
 
         <motion.section variants={VARIANTS_SECTION} transition={TRANSITION_SECTION}>
           <h3 className="mb-5 text-lg font-medium">Check out my latest work</h3>
-          <h6 className="mb-5 text-md font-extralight text-zinc-900 dark:text-zinc-50">I've worked on a variety of projects, from simple websites to complex web applications. Here are a few of my favorites.</h6>
+          <h6 className="mb-5 text-md font-light text-zinc-900 dark:text-zinc-50">I've worked on a variety of projects, from simple websites to complex web applications. Here are a few of my favorites.</h6>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {PROJECTS.map((project) => (
               <div key={project.name} className="space-y-2">
