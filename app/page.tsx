@@ -12,8 +12,9 @@ import {
 } from "@/components/ui/morphing-dialog"
 import Link from "next/link"
 import { AnimatedBackground } from "@/components/ui/animated-background"
-import { PROJECTS, WORK_EXPERIENCE, BLOG_POSTS, EMAIL, SOCIAL_LINKS } from "./data"
+import { PROJECTS, WORK_EXPERIENCE, BLOG_POSTS, EMAIL, SOCIAL_LINKS, SKILLS } from "./data"
 import { CursorTypeContext } from "@/components/ui/smooth-cursor"
+import { IconBrandGithub } from "@tabler/icons-react"
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -112,6 +113,44 @@ function MagneticSocialLink({
 import React from "react"
 import { useState, useCallback } from "react"
 
+// Utility to render job.details with structure
+function RenderJobDetails({ details }: { details: string }) {
+  if (!details) return null;
+  const lines = details.split(/\r?\n/).filter(Boolean);
+  const elements = [];
+  let listItems: React.ReactNode[] = [];
+  lines.forEach((line, idx) => {
+    if (line.startsWith('- ')) {
+      listItems.push(
+        <li key={`li-${idx}`} className="mb-1">{line.replace(/^- /, '')}</li>
+      );
+    } else {
+      if (listItems.length > 0) {
+        elements.push(
+          <ul key={`ul-${idx}`} className="list-disc ml-6 mb-3">{listItems}</ul>
+        );
+        listItems = [];
+      }
+      // Section headers
+      if (/^(Responsibilities|Key Highlights)$/i.test(line.trim())) {
+        elements.push(
+          <div key={`h4-${idx}`} className="font-semibold mt-6 mb-2 text-zinc-100">{line.trim()}</div>
+        );
+      } else if (line.trim() !== '') {
+        elements.push(
+          <p key={`p-${idx}`} className="mb-3">{line.trim()}</p>
+        );
+      }
+    }
+  });
+  if (listItems.length > 0) {
+    elements.push(
+      <ul key={`ul-end`} className="list-disc ml-6 mb-3">{listItems}</ul>
+    );
+  }
+  return <div>{elements}</div>;
+}
+
 export default function Personal() {
   const [expandedJobId, setExpandedJobId] = useState<string | null>(null)
   const toggleJob = useCallback((jobId: string) => {
@@ -122,35 +161,15 @@ export default function Personal() {
   return (
     <>
       <motion.main className="space-y-24" variants={VARIANTS_CONTAINER} initial="hidden" animate="visible">
+        {/* Skills Section */}
+     
+
         <motion.section variants={VARIANTS_SECTION} transition={TRANSITION_SECTION}>
           <div className="flex-1">
             <p className="text-zinc-600 dark:text-zinc-400">
               Full-stack developer specializing in Next.js, React Native, and Node.js with practical experience in web and
               mobile applications.{" "}
             </p>
-          </div>
-        </motion.section>
-
-        <motion.section variants={VARIANTS_SECTION} transition={TRANSITION_SECTION}>
-          <h3 className="mb-5 text-lg font-medium">Projects</h3>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-            {PROJECTS.map((project) => (
-              <div key={project.name} className="space-y-2">
-                <div className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
-                  <ProjectVideo src={project.video} />
-                </div>
-                <div className="px-1">
-                  <a
-                    className="font-base group relative inline-block font-[450] text-zinc-900 dark:text-zinc-50"
-                    href={project.link} target="_blank" rel="noopener noreferrer"
-                  >
-                    {project.name}
-                    <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 transition-all duration-200 group-hover:max-w-full"></span>
-                  </a>
-                  <p className="text-base text-zinc-600 dark:text-zinc-400">{project.description}</p>
-                </div>
-              </div>
-            ))}
           </div>
         </motion.section>
 
@@ -194,14 +213,14 @@ export default function Personal() {
 
                     {job.details && (
                       <div
-                        className="mt-4 text-zinc-700 dark:text-zinc-300 text-sm overflow-hidden transition-all duration-300 ease-in-out"
+                      className="mt-4 text-zinc-700 dark:text-zinc-300 text-sm overflow-hidden overflow-y-auto transition-all duration-300 ease-in-out"
                         style={{
                           maxHeight: isExpanded ? "500px" : "0",
                           opacity: isExpanded ? 1 : 0,
                           marginTop: isExpanded ? "1rem" : "0",
                         }}
                       >
-                        {job.details}
+                        <RenderJobDetails details={job.details} />
                       </div>
                     )}
                   </div>
@@ -211,6 +230,53 @@ export default function Personal() {
           </div></a>
          
         </motion.section>
+
+        <motion.div>
+          <section className="mb-12">
+          <h2 className="mb-5 text-lg font-medium text-zinc-50">Skills</h2>
+          <div className="flex  flex-wrap gap-3">
+            {SKILLS.map((skill) => (
+              <span
+                key={skill.id}
+                className="bg-zinc-50 text-zinc-900 px-4 py-1 rounded-lg font-light text-sm inline-block shadow-sm dark:bg-zinc-900 dark:text-zinc-50 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+              >
+                {skill.name}
+              </span>
+            ))}
+          </div>
+        </section>
+        </motion.div>
+
+        <motion.section variants={VARIANTS_SECTION} transition={TRANSITION_SECTION}>
+          <h3 className="mb-5 text-lg font-medium">Check out my latest work</h3>
+          <h6 className="mb-5 text-md font-extralight text-zinc-900 dark:text-zinc-50">I've worked on a variety of projects, from simple websites to complex web applications. Here are a few of my favorites.</h6>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            {PROJECTS.map((project) => (
+              <div key={project.name} className="space-y-2">
+                <div className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
+                  <ProjectVideo src={project.video} />
+                </div>
+                <div className="pr-4 flex items-center justify-between gap-2">
+                  <span className="font-base font-[450] text-zinc-900 dark:text-zinc-50">{project.name}</span>
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`View ${project.name} on GitHub`}
+                      className="inline-flex items-center text-zinc-900 dark:text-zinc-50 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors"
+                    >
+                      <IconBrandGithub size={20} />
+                    </a>
+                  )}
+                </div>
+                <p className="text-base text-zinc-600 dark:text-zinc-400">{project.description}</p>
+              </div>
+            ))}
+          </div>
+        </motion.section>
+
+     
 
         <motion.section variants={VARIANTS_SECTION} transition={TRANSITION_SECTION}>
           <h3 className="mb-3 text-lg font-medium">Publications</h3>

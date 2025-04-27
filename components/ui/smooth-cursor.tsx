@@ -121,8 +121,8 @@ export function SmoothCursor({
   });
   const scale = useSpring(1, {
     ...springConfig,
-    stiffness: 500,
-    damping: 35,
+    stiffness: 100,
+    damping: 5,
   });
 
   useEffect(() => {
