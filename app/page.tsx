@@ -160,7 +160,7 @@ export default function Personal() {
 
   return (
     <>
-      <motion.main className="space-y-24" variants={VARIANTS_CONTAINER} initial="hidden" animate="visible">
+      <motion.main className="space-y-20" variants={VARIANTS_CONTAINER} initial="hidden" animate="visible">
         {/* Skills Section */}
      
 
@@ -231,21 +231,6 @@ export default function Personal() {
          
         </motion.section>
 
-        <motion.div>
-          <section className="mb-12">
-          <h2 className="mb-5 text-lg font-medium text-zinc-50">Skills</h2>
-          <div className="flex  flex-wrap gap-3">
-            {SKILLS.map((skill) => (
-              <span
-                key={skill.id}
-                className="bg-zinc-50 text-zinc-900 px-4 py-1 rounded-lg font-light text-sm inline-block shadow-sm dark:bg-zinc-900 dark:text-zinc-50 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800"
-              >
-                {skill.name}
-              </span>
-            ))}
-          </div>
-        </section>
-        </motion.div>
 
         <motion.section variants={VARIANTS_SECTION} transition={TRANSITION_SECTION}>
           <h3 className="mb-5 text-lg font-medium">Check out my latest work</h3>
@@ -276,7 +261,21 @@ export default function Personal() {
           </div>
         </motion.section>
 
-     
+        <motion.div>
+          <section className="mb-12">
+          <h2 className="mb-5 text-lg font-medium text-zinc-50">Skills</h2>
+          <div className="flex  flex-wrap gap-3">
+            {SKILLS.map((skill) => (
+              <span
+                key={skill.id}
+                className="bg-zinc-50 text-zinc-900 px-4 py-1 rounded-lg font-light text-sm inline-block shadow-sm dark:bg-zinc-900 dark:text-zinc-50 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+              >
+                {skill.name}
+              </span>
+            ))}
+          </div>
+        </section>
+        </motion.div>
 
         <motion.section variants={VARIANTS_SECTION} transition={TRANSITION_SECTION}>
           <h3 className="mb-3 text-lg font-medium">Publications</h3>
