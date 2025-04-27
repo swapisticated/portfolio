@@ -51,22 +51,24 @@ function ProjectVideo({ src }: ProjectVideoProps) {
         <video src={src} autoPlay loop muted className="aspect-video w-full cursor-zoom-in rounded-xl" />
       </MorphingDialogTrigger>
       <MorphingDialogContainer>
-        <MorphingDialogContent className="relative aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
-          <video src={src} autoPlay loop muted className="aspect-video h-[50vh] w-full rounded-xl md:h-[70vh]" />
-        </MorphingDialogContent>
-        <MorphingDialogClose
-          className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1"
-          variants={{
-            initial: { opacity: 0 },
-            animate: {
-              opacity: 1,
-              transition: { delay: 0.3, duration: 0.1 },
-            },
-            exit: { opacity: 0, transition: { duration: 0 } },
-          }}
-        >
-          <XIcon className="h-5 w-5 text-zinc-500" />
-        </MorphingDialogClose>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-2">
+          <MorphingDialogContent className="relative aspect-video w-full max-w-4xl lg:max-w-5xl rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50 flex items-center justify-center">
+            <video src={src} autoPlay loop muted className="w-full aspect-video max-h-[70vh] md:max-h-[90vh] lg:max-h-[95vh] rounded-xl" />
+          </MorphingDialogContent>
+          <MorphingDialogClose
+            className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1"
+            variants={{
+              initial: { opacity: 0 },
+              animate: {
+                opacity: 1,
+                transition: { delay: 0.3, duration: 0.1 },
+              },
+              exit: { opacity: 0, transition: { duration: 0 } },
+            }}
+          >
+            <XIcon className="h-5 w-5 text-zinc-500" />
+          </MorphingDialogClose>
+        </div>
       </MorphingDialogContainer>
     </MorphingDialog>
   )

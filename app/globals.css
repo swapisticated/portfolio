@@ -152,6 +152,40 @@ html, body, * {
   }
 }
 
+/* Responsive video/modal fixes */
+.video-modal-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  aspect-ratio: 16/9;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-modal-wrapper video,
+.video-modal-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 1rem;
+  background: #000;
+}
+
+@media (max-width: 640px) {
+  .video-modal-wrapper {
+    aspect-ratio: 16/9;
+    max-height: 40vh;
+    padding: 0;
+  }
+  .video-modal-wrapper video,
+  .video-modal-wrapper iframe {
+    max-height: 40vh;
+    border-radius: 0.75rem;
+  }
+}
 
 @keyframes spotlight {
   0% {

@@ -92,7 +92,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
   },
   {
     label: 'LinkedIn',
-    link: 'https://www.linkedin.com/in/swapnil-sharma-806',
+    link: 'https://www.linkedin.com/in/swapisticated',
   },
 ]
 
