@@ -104,9 +104,7 @@ Key Highlights
     Key Highlights
     
 - Delivered responsive, production-grade web and mobile applications.
-- Integrated real-time data pipelines for device control and content management.
-- Automated deployment workflows, improving system reliability and release cycles.`
-  },
+- Integrated real-time data pipelines for device control and information exchange.`  },
 ]
 
 export const SKILLS: Skill[] = [
