@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/morphing-dialog"
 import Link from "next/link"
 import { AnimatedBackground } from "@/components/ui/animated-background"
-import { PROJECTS, WORK_EXPERIENCE, BLOG_POSTS, EMAIL, SOCIAL_LINKS, SKILLS } from "./data"
+import { PROJECTS, WORK_EXPERIENCE, BLOG_POSTS, EMAIL, SOCIAL_LINKS, SKILLS, EDUCATION } from "./data"
 import { CursorTypeContext } from "@/components/ui/smooth-cursor"
 import { IconBrandGithub } from "@tabler/icons-react"
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
@@ -79,34 +79,46 @@ function ProjectVideo({ src }: ProjectVideoProps) {
 function MagneticSocialLink({
   children,
   link,
+  showIcon = true,
 }: {
   children: React.ReactNode
-  link: string
+  link?: string
+  showIcon?: boolean
 }) {
   return (
     <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
-      <a
-        href={link}
-        className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700"
-        target="_blank" rel="noopener noreferrer"
-      >
-        {children}
-        <svg
-          width="15"
-          height="15"
-          viewBox="0 0 15 15"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-3 w-3"
+      {link ? (
+        <a
+          href={link}
+          className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700"
+          target="_blank" rel="noopener noreferrer"
         >
-          <path
-            d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z"
-            fill="currentColor"
-            fillRule="evenodd"
-            clipRule="evenodd"
-          ></path>
-        </svg>
-      </a>
+          {children}
+          {showIcon && (
+            <svg
+              className="ml-1 h-3 w-3 text-zinc-400 group-hover:text-zinc-100 dark:group-hover:text-zinc-900 transition-colors"
+              fill="none"
+              height="16"
+              width="16"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z"
+                fill="currentColor"
+                fillRule="evenodd"
+                clipRule="evenodd"
+              />
+            </svg>
+          )}
+        </a>
+      ) : (
+        <span
+          className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2.5 py-1 text-sm text-black dark:bg-zinc-800 dark:text-zinc-100"
+          style={{ cursor: 'default' }}
+        >
+          {children}
+        </span>
+      )}
     </Magnetic>
   )
 }
@@ -152,6 +164,26 @@ function RenderJobDetails({ details }: { details: string }) {
   return <div>{elements}</div>;
 }
 
+const skills = [
+  "JavaScript",
+  "React",
+  "Next.js",
+  "Node.js",
+  "Git",
+  "React Native",
+  "Java",
+  "MySQL",
+  "Firebase",
+  "Prisma ORM",
+  "Docker",
+  "REST APIs",
+  "Postman",
+  "TailwindCSS",
+
+  
+    // add more as needed
+]
+
 export default function Personal() {
   const [expandedJobId, setExpandedJobId] = useState<string | null>(null)
   const toggleJob = useCallback((jobId: string) => {
@@ -161,9 +193,7 @@ export default function Personal() {
 
   return (
     <>
-      <motion.main className="space-y-20" variants={VARIANTS_CONTAINER} initial="hidden" animate="visible">
-        {/* Skills Section */}
-     
+      <motion.main className="space-y-18" variants={VARIANTS_CONTAINER} initial="hidden" animate="visible">
 
         <motion.section variants={VARIANTS_SECTION} transition={TRANSITION_SECTION}>
           <div className="flex-1">
@@ -171,6 +201,25 @@ export default function Personal() {
               Full-stack developer specializing in Next.js, React Native, and Node.js with practical experience in web and
               mobile applications.{" "}
             </p>
+          </div>
+        </motion.section>
+
+        <motion.section variants={VARIANTS_SECTION} transition={TRANSITION_SECTION}>
+          <div className="mb-8">
+            <h2 className="text-lg font-semibold mb-4 text-zinc-800 dark:text-zinc-100">Education</h2>
+            <div className="space-y-5">
+              {EDUCATION.map((edu) => (
+                <div key={edu.id} className="flex flex-row justify-between items-center bg-transparent p-0">
+                  <div>
+                    <div className="font-medium text-base text-zinc-800 dark:text-zinc-100">{edu.institution}</div>
+                    <div className="text-sm text-zinc-600 dark:text-zinc-400">{edu.degree}</div>
+                  </div>
+                  <div className="text-sm text-zinc-400 dark:text-zinc-400 font-normal">
+                    {edu.start} - {edu.end}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </motion.section>
 
@@ -187,16 +236,16 @@ export default function Personal() {
                   onMouseEnter={() => job.details && setCursorType && setCursorType('pointer')}
                   onMouseLeave={() => setCursorType && setCursorType('default')}
                 >
-                  
+
                   <div className="relative w-full rounded-[15px] bg-white p-4 dark:bg-zinc-950">
                     <div className="relative flex w-full flex-row justify-between items-center">
                       <div>
-                        <h4 className="font-normal dark:text-zinc-100">{job.title}</h4>
+                        <h4 className="font-medium text-zinc-800 dark:text-zinc-100">{job.title}</h4>
                         <p className="text-zinc-500 dark:text-zinc-400">{job.company}</p>
                       </div>
                       <div className="flex flex-col items-end justify-center min-w-[68px]">
                         <div className="flex flex-col items-end">
-                          <span className="text-xs text-zinc-600 dark:text-zinc-400 leading-tight">{job.start} - {job.end}</span>
+                          <span className="text-sm text-zinc-400 dark:text-zinc-400 leading-tight">{job.start} - {job.end}</span>
                           {job.details && (
                             <svg
                               className={`mt-2 h-3.5 w-3.5 transition-transform duration-300 ${isExpanded ? 'rotate-90' : ''} text-zinc-600 dark:text-zinc-400 md:hidden`}
@@ -214,7 +263,7 @@ export default function Personal() {
 
                     {job.details && (
                       <div
-                      className="mt-4 text-zinc-700 dark:text-zinc-300 text-sm  transition-all duration-300 ease-in-out"
+                        className="mt-4 text-zinc-700 dark:text-zinc-300 text-sm  transition-all duration-300 ease-in-out"
                         style={{
                           maxHeight: isExpanded ? "500px" : "0",
                           opacity: isExpanded ? 1 : 0,
@@ -229,8 +278,9 @@ export default function Personal() {
               )
             })}
           </div></a>
-         
+
         </motion.section>
+
 
 
         <motion.section variants={VARIANTS_SECTION} transition={TRANSITION_SECTION}>
@@ -261,10 +311,19 @@ export default function Personal() {
             ))}
           </div>
         </motion.section>
-
-        <motion.div>
-          <section className="mb-12">
-          <h2 className="mb-5 text-lg font-medium text-zinc-50">Skills</h2>
+        <motion.section variants={VARIANTS_SECTION} transition={TRANSITION_SECTION}>
+          <h2 className="mb-5 text-lg font-medium text-zinc-800 dark:text-zinc-100">Skills</h2>
+          <div className="flex flex-wrap gap-2 mt-6">
+            {skills.map(skill => (
+              <MagneticSocialLink link={undefined} showIcon={false} key={skill}>
+                {skill}
+              </MagneticSocialLink>
+            ))}
+          </div>
+        </motion.section>
+        {/* <motion.div>
+          <section className="mb-0">
+          <h2 className="mb-5 text-lg font-medium text-zinc-800 dark:text-zinc-100">Skills</h2>
           <div className="flex  flex-wrap gap-3">
             {SKILLS.map((skill) => (
               <span
@@ -276,7 +335,7 @@ export default function Personal() {
             ))}
           </div>
         </section>
-        </motion.div>
+        </motion.div> */}
 
         <motion.section variants={VARIANTS_SECTION} transition={TRANSITION_SECTION}>
           <h3 className="mb-3 text-lg font-medium">Publications</h3>

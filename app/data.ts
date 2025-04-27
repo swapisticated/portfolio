@@ -34,6 +34,17 @@ type Skill = {
   id: string
 }
 
+type Education = {
+  institution: string
+  degree: string
+  field: string
+  start: string
+  end: string
+  location?: string
+  id: string
+  details?: string
+}
+
 export const PROJECTS: Project[] = [
   {
     name: 'Virtual AI Inventory',
@@ -64,6 +75,17 @@ export const PROJECTS: Project[] = [
   // },
 ]
 
+export const EDUCATION: Education[] = [
+  {
+    institution: 'NMAM Institute of Technology',
+    degree: 'Bachelor of Electronics and Communication Engineering',
+    field: '',
+    start: '2021',
+    end: '2025',
+    id: 'edu1'
+  }
+]
+
 export const WORK_EXPERIENCE: WorkExperience[] = [
   {
     company: 'Skyroot Marktech',
@@ -72,12 +94,12 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     end: 'Present',
     link: 'https://www.skyrootmarktech.com/ ',
     id: 'work1',
-    details: `Built a cross-platform school management app in an Agile team, using React Native and Redux. Focused on streamlining school operations.
+    details: `Built a cross-platform school management app in an agile team, using React Native and Redux. Focused on streamlining school operations.
 
 Responsibilities
 - Developed secure authentication, session handling, and integrated dynamic APIs.
 - Built reusable UI components, optimized performance, and implemented OneSignal push notifications.
-- Participated in Agile ceremonies including sprint planning, daily standups, and code reviews.
+- Participated in agile ceremonies including sprint planning, daily standups, and code reviews.
 
 
 Key Highlights
